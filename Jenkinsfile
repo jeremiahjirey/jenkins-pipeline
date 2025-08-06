@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("flask-jenkins-demo:latest")
+                    sh 'docker build -t flask-jenkins-demo:latest .'
                 }
             }
         }
