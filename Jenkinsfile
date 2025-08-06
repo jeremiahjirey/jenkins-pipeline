@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                echo 'Repo cloned automatically by Jenkins SCM'
+                 git branch: 'main', url: 'https://github.com/jeremiahjirey/jenkins-pipeline.git'
             }
         }
 
@@ -23,15 +23,6 @@ pipeline {
                     sh 'docker run -d --name flask-demo -p 5000:5000 flask-jenkins-demo:latest'
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline Finished.'
-        }
-        failure {
-            echo 'Something went wrong. Check the logs!'
         }
     }
 }
